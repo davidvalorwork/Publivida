@@ -83,19 +83,24 @@ const inicializar = async(db) => {
     ]
     // categoriaIdCategorias: 1,
     for(let i in productos){
-        productos[i].categoriaIdCategorias = i+1;
-        await db.productos.create(productos[i]).then(result=>{
-            console.log(result)
-        })
-    }
-
-    await db.precios.create(
-        {
-            nombre_precio: "Rango1",
-            cantidad_desde:1,
-            cantidad_hasta:5,
-            valor_unitario:10000,
-            borrado:0,
+        if(i<=productos.length){
+            let x = parseInt(i)+1
+            productos[i].categoriaIdCategorias = x;
+            await db.productos.create(productos[i]).then(result=>{
+                console.log(result)
+            })
+            
+            await db.precios.create(
+                {
+                    nombre_precio: "Rango1",
+                    cantidad_desde:1,
+                    cantidad_hasta:5,
+                    valor_unitario:10000,
+                    borrado:0,
+                    productoIdProductos:x
+                }
+            )
         }
-    )
+    }
+    
 }
