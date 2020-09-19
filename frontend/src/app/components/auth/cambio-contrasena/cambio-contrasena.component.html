@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Cambio de Contraseña</h3>
+			</div>
+			<div class="card-body">
+				<form [formGroup]="form" (ngSubmit)="verificarClaves(form.value)">
+					<!-- CLAVE -->
+					<div class="form-control-group col-12 mt-4 mb-4">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input class="form-control" 
+							minlength="8" formControlName="clave" type="password" placeholder="Clave">
+						</div>
+						<div>
+							<div *ngIf="form.get('clave').invalid && (form.get('clave').dirty || form.get('clave').touched)">
+								<mat-error *ngIf="form.get('clave').hasError('required')
+								&& form.get('clave').dirty"
+								class="error">Este campo es requerido</mat-error>
+								<mat-error *ngIf="form.get('clave').hasError('minlength')
+							"
+							class="error">Logitud minima 8 caracteres</mat-error>
+							</div>
+						</div>
+					</div>
+					<!-- REPITA CLAVE -->
+					<div class="form-control-group col-12 mt-4 mb-4">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input class="form-control" formControlName="rclave" 
+								minlength="8" type="password" placeholder="Repita la clave">
+						</div>
+						<div>
+							<div *ngIf="form.get('rclave').invalid && (form.get('rclave').dirty || form.get('rclave').touched)">
+								<mat-error *ngIf="form.get('rclave').hasError('required')
+								&& form.get('rclave').dirty"
+								class="error">Este campo es requerido</mat-error>
+								<mat-error *ngIf="form.get('rclave').hasError('minlength')
+							"
+							class="error">Logitud minima 8 caracteres</mat-error>
+							</div>
+						</div>
+                    </div>
+                    <div class="text-center">
+                        <mat-error *ngIf="claveInvalida"
+								class="error">Las claves no coinciden</mat-error>
+                    </div>
+					<div class="form-group text-center mt-5">
+						<input type="submit" value="Cambiar" class="btn  login_btn"
+							[disabled]="form.status!=='VALID' || submit === true">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

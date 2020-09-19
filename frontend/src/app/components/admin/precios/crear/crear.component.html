@@ -1,0 +1,23 @@
+<div>
+  <h2>Crear Rango de Precios</h2>
+</div>
+<form [formGroup]="form" (ngSubmit)="crear(form.value)">
+  <mat-form-field appearance="" style="width: 100%;">
+      <mat-label>Nombre del Rango</mat-label>
+      <input matInput type="text" formControlName="nombre_precio"/>
+  </mat-form-field>
+  <mat-form-field appearance="" style="width: 100%;">
+      <mat-label>Cantidad Desde</mat-label>
+      <input matInput type="number" formControlName="cantidad_desde"/>
+  </mat-form-field>
+  <mat-form-field appearance="" style="width: 100%;">
+      <mat-label>Cantidad Hasta</mat-label>
+      <input matInput type="number" formControlName="cantidad_hasta"/>
+  </mat-form-field>
+  <mat-form-field appearance="" style="width: 100%;">
+      <mat-label>Valor Unitario</mat-label>
+      <input matInput type="number" formControlName="valor_unitario"/>
+  </mat-form-field>
+  <button mat-raised-button
+      [disabled]="form.status !== 'VALID'" color="primary" type="submit">Crear</button>
+</form>

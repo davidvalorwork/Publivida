@@ -1,0 +1,97 @@
+<nav >
+  <ol class="breadcrumb" style="background: transparent;">
+    <li class="breadcrumb-item " aria-current="page" [routerLink]="['../../']" routerLinkActive="router-link-active" 
+    >Productos</li>
+    <li class="breadcrumb-item " aria-current="page" *ngIf="product"
+    >{{product.nombre_producto}}</li>
+  </ol>
+</nav>
+<mat-card style="margin-left: 5%; margin-right: 5%; margin-top: 2%;" *ngIf="product">
+  <div class="row">
+    <div class="col-6">
+      <ng-image-slider [images]="imageObject" 
+      [imageSize]="{width:'80%',height:'40%'}" #nav></ng-image-slider>
+    </div>
+    <div class="col-6 text-center"
+    >
+    
+      <h3 class="titulo"><b>{{product.nombre_producto}}</b></h3>
+      <p>{{product.descripcion_producto}}</p>
+      <br>
+      <div class="text-center">
+          <p style="
+          color:rgba(153,153,153);
+          font-size: 20px;
+          ">Cantidad</p>
+      
+      <div class="row mb-3 text-center" >
+          <div class="col-4"></div>
+          <div class="col-4">
+              <div  class="row"
+              style="border: 1px solid #e2e8f0; border-radius: 4px;">
+                  <div class="col-4"> 
+                      <button mat-icon-button (click)="resta()"
+                  style=" font-size: 30px;">-</button>
+                  </div>
+                  <div class="col-4 mt-2">
+                      <p style="font-size: 15px; "> {{cantidad}}</p>
+                  </div>
+                  <div class="col-4">
+                      <button mat-icon-button 
+                  (click)="aumenta()" style=" font-size: 15px;">+</button>
+                  </div>
+                  </div>
+              </div>
+      </div>
+      <div class="row">
+          <div class="col-6"><p style="color:#007bff; font-size: 16px;">Stock:  </p></div>
+          <div class="col-6"><b style="font-size: 20px; color: black;">{{product.stock}} Unidades</b></div>
+      </div>
+      <div class="row">
+          <div class="col-6"><p style="color:#007bff; font-size: 16px;">Precio: </p></div>
+          <div class="col-6"><b style="font-size: 20px; color: black;">${{precio}} CLP</b></div>
+      </div>
+      <!-- <p>Stock: {{product.stock}}</p>
+      <button mat-icon-button (click)="resta()">-</button><input 
+      (keypress)="ChangeCantidad($event)" disabled type="text" [value]='cantidad' mat-input><button mat-icon-button 
+      (click)="aumenta()">+</button>
+      <p>Precio: {{precio}}</p>-->
+      <br>
+      <button mat-raised-button class="mt-3"
+      style="background:#3483fa; color:white"
+      (click)="pedido()">Añadir <mat-icon>add_shopping_cart</mat-icon></button> <br>
+      <button mat-raised-button class="mt-3"
+      style="background:#3483fa; color:white"
+      (click)="Personalizar()" >Personalizar <mat-icon>create</mat-icon></button> 
+    </div></div>
+    <div class="col-6 mt-5">
+      <h1>Entrega</h1>
+      <p>Acordar con el vendedor</p>
+    </div>
+    <div class="col-6"></div>
+    <div class="col-6 mt-5">
+      <h1>Tabla de Precios</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre del Rango</th>
+            <th scope="col">Desde</th>
+            <th scope="col">Hasta</th>
+            <th scope="col">Valor Unitario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let precio of rango_precios">
+            <th scope="row">1</th>
+            <td>{{precio.nombre_precio}}</td>
+            <td>{{precio.cantidad_desde}}</td>
+            <td>{{precio.cantidad_hasta}}</td>
+            <td>{{precio.valor_unitario}} CLP</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</mat-card>

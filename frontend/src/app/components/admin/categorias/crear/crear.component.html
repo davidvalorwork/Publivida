@@ -1,0 +1,10 @@
+<div>
+    <h2>Crear Categoria</h2>
+</div>
+<form [formGroup]="form" (ngSubmit)="crear(form.value)">
+    <mat-form-field appearance="" style="width: 100%;">
+        <mat-label>Nombre Categoria</mat-label>
+        <input matInput type="text" formControlName="nombre_categoria"/>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Crear</button>
+</form>

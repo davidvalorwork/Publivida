@@ -1,0 +1,35 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title font-weight-bold" id="exampleModalLabel1">
+        Alerta
+      </h4>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+        mat-dialog-close
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ text2 }}</p>
+      </div>
+      <div class="modal-footer" style="display: inline !important;">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <button mat-dialog-close="true" class="btn btn-block btn-success">
+              Aceptar
+              <i class="fa fa-check-circle ml-2"></i>
+            </button>
+          </div>
+          <div class="col-12 col-md-6">
+            <button mat-dialog-close="false" class="btn btn-block btn-danger">
+              Cancelar <i class="fa fa-times-circle ml-2"></i>
+            </button>
+          </div>
+        </div>
+    </div>
+  </div>
+  

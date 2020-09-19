@@ -1,0 +1,68 @@
+<nav >
+  <ol class="breadcrumb" style="background: transparent;">
+    <li class="breadcrumb-item " aria-current="page" [routerLink]="['../']" routerLinkActive="router-link-active" 
+    >Admin</li>
+    <li class="breadcrumb-item " aria-current="page" 
+    >Categorias</li>
+  </ol>
+</nav>
+<!-- <p s>Usuarios</p> -->
+<div >
+  <button class="botonF waves-effect waves-light" (click)="crear()">
+    <span>+</span>
+  </button>
+</div>
+<mat-card class="example-card mt-4 mr-3 ml-3" >
+    <mat-card-content>
+      <div class="row">
+        <div class="col-6">
+          <input type="text" mat-input (keyup)="buscar($event)" placeholder="Buscar"
+          class="form-control"/>            
+        </div>
+      </div>
+      <div class="spinner-container text-center" *ngIf="dataSource === undefined">
+        <mat-spinner></mat-spinner>
+      </div>
+        <table mat-table [dataSource]="dataSource" >
+            <ng-container matColumnDef="nombre_categoria">
+              <th mat-header-cell *matHeaderCellDef>Nombre Categoria </th>
+              <td mat-cell *matCellDef="let element">
+                {{element.nombre_categoria}}
+                </td>
+            </ng-container>
+          
+           
+            <!-- Weight Column -->
+            <ng-container matColumnDef="estado">
+              <th mat-header-cell *matHeaderCellDef> Estado </th>
+              <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.borrado ===0">Activo </div>
+                <div *ngIf="element.borrado ===1">Inactivo</div>
+              </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="options">
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let element">
+                     <a mat-button color="primary" 
+                      (click)="setCategoria(element.id_categorias)"
+                      [routerLink]="['/admin/productos']" 
+                      routerLinkActive="router-link-active" >
+                      <mat-icon>add_circle</mat-icon> Productos </a>
+                     <a mat-icon-button color="secondary"
+                     (click)="editar(element)"
+                     ><mat-icon>edit</mat-icon></a>
+                     <a mat-icon-button color="danger"
+                     (click)="eliminar(element.id_categorias)"><mat-icon>delete</mat-icon></a>
+                </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [length]="categorias?.length" [pageSize]="5"
+                   [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+          
+    </mat-card-content>
+  </mat-card>

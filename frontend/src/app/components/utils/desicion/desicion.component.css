@@ -1,0 +1,9 @@
+.modal-footer {
+    display: inline !important;
+}
+.modal-content{
+    border: none;
+}
+.modal-body{
+    border:none;
+}

@@ -1,0 +1,19 @@
+<div>
+    <h2>Crear Producto</h2>
+</div>
+<form [formGroup]="form" (ngSubmit)="crear(form.value)">
+    <mat-form-field appearance="" style="width: 100%;">
+        <mat-label>Nombre Producto</mat-label>
+        <input matInput type="text" formControlName="nombre_producto"/>
+    </mat-form-field>
+    <mat-form-field appearance="" style="width: 100%;">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" formControlName="stock"/>
+    </mat-form-field>
+    <mat-form-field appearance="" style="width: 100%;">
+        <mat-label>Descripción Producto</mat-label>
+        <input matInput type="text" formControlName="descripcion_producto"/>
+    </mat-form-field>
+    <button mat-raised-button
+        [disabled]="form.status !== 'VALID'" color="primary" type="submit">Crear</button>
+</form>

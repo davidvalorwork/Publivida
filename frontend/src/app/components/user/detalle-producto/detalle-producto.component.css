@@ -1,0 +1,19 @@
+.breadcrumb-item{
+  color:blue;
+}
+
+.breadcrumb-item:hover{
+  color: cornflowerblue;
+  cursor: pointer;
+}
+
+.titulo{
+  font-size: 24px;
+  --text-opacity: 1;
+    color: #292929;
+    color: rgba(41,41,41,var(--text-opacity));
+    line-height: 1.25;
+    font-weight: 500;
+    box-sizing: border-box;
+    border: 0 solid #e2e8f0;
+}

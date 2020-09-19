@@ -1,0 +1,161 @@
+<mat-toolbar style="background-color:white">
+  <mat-toolbar-row>
+    
+    <h3 style="color:#67b0ff; cursor: pointer;" routerLink = "../"><img 
+      style="width: 250px;"
+      src="https://www.publivida.cl/images/LOGO-PUBLIVIDA-WEB_vqmzs4dt.png" alt=""></h3>
+    <span class="menu-spacer"></span>
+    <div class="ml-auto">
+    </div>
+    <!-- <form class="form-inline mr-3">
+      <div class="md-form my-0">
+        <input style="width: 100%;"
+         class="form-control mr-sm" type="text" placeholder="Buscar" aria-label="Search">
+      </div>
+    </form> -->
+    <div class="dropdown mr-3" *ngIf="registrado">
+      <a mat-icon-button [routerLink]="['/mis-pedidos']" routerLinkActive="router-link-active"><mat-icon>shopping_cart</mat-icon></a>
+      <button 
+      class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+      >
+      {{nombre_usuario}}
+        <i class="fas fa-user"></i>
+      </button>
+      <div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
+        <a mat-button class="dropdown-item " [routerLink]="['/perfil']" routerLinkActive="router-link-active" ><mat-icon>account_circle</mat-icon> Perfil</a>
+        <div>
+          <a mat-button class="dropdown-item" [routerLink]="['/login']" routerLinkActive="router-link-active" 
+          (click)="logout()">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!registrado">
+      <button mat-raised-button [routerLink]="['/login']" routerLinkActive="router-link-active" >Ingresa</button>
+      <button mat-raised-button class="ml-4" [routerLink]="['/registro']" routerLinkActive="router-link-active" 
+      style="background-color:#289108; color:white;"
+      >Registro</button>
+    </div>
+  </mat-toolbar-row>
+  
+</mat-toolbar>
+<mat-toolbar style="background: white;">
+  <mat-toolbar-row class="" style="background-color: #252525;">
+  
+    
+    <div class="nav-item">
+      <div class="">
+  
+        <nav class="nav-menu mobile-menu text-center" id="basicExampleNav" style="margin-left: 10%;">
+  
+  
+          <ul *ngFor="let categoria of categorias" class="text-center">
+            <li  *ngIf="categoria.productos">
+                <a class="nav-link" href="#" (click)="buscar(categoria.nombre_categoria)" >{{categoria.nombre_categoria}}</a>
+                <div *ngIf="categoria.productos.length !== 0">
+                  <ul class="dropdown"  
+                    >
+                    <li *ngFor="let producto of categoria.productos"><a [routerLink]="[ '../../../detalle-producto/'+categoria.id_categorias ]">{{producto.nombre_producto}}</a></li>
+                  </ul>
+                </div>
+            </li>
+          </ul>
+  
+        </nav>
+  
+        </div>
+        </div>
+  
+  <!--/.Navbar-->
+  </mat-toolbar-row>
+</mat-toolbar>  
+<mat-sidenav-container style="background: whitesmoke; ">
+  <mat-sidenav #sidenav style="background: white; ">
+    <mat-nav-list>
+
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/admin/usuarios'"><mat-icon>account_circle</mat-icon> Usuarios </a>
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/admin/categorias'"><mat-icon>shopping_cart</mat-icon> Categorias / Productos </a>
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/admin/pedidos'"><mat-icon>store</mat-icon> Pedidos </a>
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/admin/pagos'"> <mat-icon>credit_card</mat-icon>Pagos </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <div style="min-height: 70%;">
+      <router-outlet></router-outlet>
+    </div>
+    <footer class="footer-section mt-2">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3">
+                  <div class="footer-left">
+                      <div class="footer-logo">
+                          <a href="#"><img src="https://www.publivida.cl/images/LOGO-PUBLIVIDA-WEB_vqmzs4dt.png" alt=""></a>
+                      </div>
+                      <ul>
+                          <li>Direccion: 60-49 Road 11378 New York</li>
+                          <li>Telefono: +56 11.188.888</li>
+                          <li>Correo: publivida@gmail.com</li>
+                      </ul>
+                      <div class="footer-social">
+                          <a href="#"><i class="fa fa-facebook"></i></a>
+                          <a href="#"><i class="fa fa-instagram"></i></a>
+                          <a href="#"><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-pinterest"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-2 offset-lg-1">
+                  <div class="footer-widget">
+                      <h5>Informacion</h5>
+                      <ul>
+                          <li><a href="#">Sobre Nosotros</a></li>
+                          <li><a href="#">Compra</a></li>
+                          <li><a href="#">Contacto</a></li>
+                          <li><a href="#">Serivius</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-2">
+                  <div class="footer-widget">
+                      <h5>Mi cuenta</h5>
+                      <ul>
+                          <li><a href="#">Mi cuenta</a></li>
+                          <li><a href="#">Contacto</a></li>
+                          <li><a href="#">Carrito</a></li>
+                          <li><a href="#">Tienda</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="newslatter-item">
+                      <h5>Subscribete a nuestra revista</h5>
+                      <p>Introduce tu email para recibir promociones</p>
+                      <form action="#" class="subscribe-form">
+                          <input type="text" placeholder="Ingresa tu email">
+                          <button type="button">Subscribe</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="copyright-reserved">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="copyright-text">
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Publivida All rights reserved 
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      </div>
+                      <div class="payment-pic">
+                          <img src="img/payment-method.png" alt="">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>
+

@@ -1,0 +1,50 @@
+<div>
+    <h2>Datos Producto</h2>
+</div>
+<form [formGroup]="form" (ngSubmit)="crear(form.value)">
+        <div class="row">
+            <div class="col-4">
+                <mat-form-field appearance="" style="width: 100%;">
+                    <mat-label>Nombre Producto</mat-label>
+                    <input matInput type="text" formControlName="nombre_producto"/>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field appearance="" style="width: 100%;">
+                    <mat-label>Stock</mat-label>
+                    <input matInput type="number" formControlName="stock"/>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field appearance="" style="width: 100%;">
+                    <mat-label>Descripción Producto</mat-label>
+                    <input matInput type="textarea" formControlName="descripcion_producto"/>
+                </mat-form-field>
+            </div>
+        </div>
+    <h3>
+        <b>Imagenes del Producto</b>
+    </h3>
+    <div class="row">
+        <div *ngFor="let img of filesProduct">
+            <div class="col-2"><img class="img" [src]="url_api+img"/>
+            </div>
+        </div>
+        <div class="col-12" *ngIf="filesProduct.length === 0">
+            <p>No hay archivos.</p>
+        </div>
+    </div>
+
+    <h3 class="mt-3">
+        <b>Imagenes de Base</b>
+    </h3>
+    <div class="row">
+        <div *ngFor="let img of filesPlantilla; let i = index">
+            <div class="col-2"><img class="img" [src]="url_api+img"/>
+            </div>
+        </div>
+        <div class="col-12" *ngIf="filesPlantilla.length === 0">
+            <p>No hay archivos.</p>
+        </div>
+    </div>
+</form>

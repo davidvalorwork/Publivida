@@ -1,0 +1,261 @@
+<!-- <mat-toolbar style="background-color:white">
+    <mat-toolbar-row>
+      <a mat-icon-button style="color: #81b4fa;" (click)="sidenav.toggle()">
+        <mat-icon >menu</mat-icon>
+      </a>
+      <h1 style="color:#81b4fa"><a [routerLink]="['/admin/dashboard']" routerLinkActive="router-link-active" >Publivida</a></h1>
+      <span class="menu-spacer"></span>
+      <div class="ml-auto">
+      </div>
+      <div class="dropdown ">
+        <a mat-icon-button><mat-icon>notifications</mat-icon></a>
+       
+        <button 
+        class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+        >
+        {{nombre_usuario}}
+          <img [src]="url_api+url_usuario_img" alt="" class="img-prueba" *ngIf="url_usuario_img !== ''">
+        </button>
+        <div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
+          <a mat-button class="dropdown-item "
+           [routerLink]="['/admin/perfil']" routerLinkActive="router-link-active" ><mat-icon>account_circle</mat-icon> Perfil</a>
+          <div>
+            <a mat-button class="dropdown-item" (click)="logout()"
+             [routerLink]="['../']" routerLinkActive="router-link-active" >Cerrar Sesión</a>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container style="background: whitesmoke; height: 100%; overflow: hidden;">
+    <mat-sidenav #sidenav style="background: white;">
+      <mat-nav-list>
+  
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/admin/usuarios'"><mat-icon>account_circle</mat-icon> Usuarios </a>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/admin/categorias'"><mat-icon>shopping_cart</mat-icon> Categorias / Productos </a>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/admin/pagos'"> <mat-icon>credit_card</mat-icon>Pedidos </a>
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content >
+      <div style="margin-left: 10%; margin-right: 10%;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container> -->
+
+
+  
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar  accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <div class="sidebar-brand d-flex align-items-center justify-content-center"  style="color: white;">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Publivida</div>
+      </div>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="[ 'dashboard' ]" >
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading" style="color:white">
+        Modulos
+      </div>
+
+      <!-- Nav Item - Productos -->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[ 'usuarios' ]" >
+          <i class="fas fa-user-circle"></i>
+          <span>Usuarios</span></a>
+      </li>
+
+      <!-- Nav Item - Servicios -->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[ 'categorias' ]">
+          <i class="fas fa-boxes"></i>
+          <span>Categorias</span></a>
+      </li>
+
+      <!-- Nav Item - Arrendar -->
+      <li class="nav-item" >
+        <a class="nav-link" [routerLink]="[ 'pagos' ]">
+          <i class="fas fa-store"></i>
+          <span> Pedidos</span></a>
+      </li>
+
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+     
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle"  id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle"  id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">3+</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" >
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" >
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" >
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" >Show All Alerts</a>
+              </div>
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle"  id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{email}}</span>
+                <mat-icon>account_circle</mat-icon>
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" routerLink="perfil">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Perfil
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item"  data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Salir
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <router-outlet></router-outlet>
+
+      <!-- Footer -->
+     
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Selecciona salir si estas seguro de cerrar la sesion.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" data-dismiss="modal" 
+          (click)="logout()" [routerLink]="[ '../' ]">Salir</a>
+        </div>
+      </div>
+    </div>
+  </div>

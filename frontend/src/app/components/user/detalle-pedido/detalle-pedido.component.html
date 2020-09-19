@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <mat-card>
+    <div>
+      <h2>Pedido</h2>
+    </div>
+    <form [formGroup]="form" class="row" *ngIf="form !== undefined">
+      <div class="col-6">
+        <mat-form-field appearance="" style="width: 100%;">
+            <mat-label>Plantilla modificada</mat-label>
+            <input matInput type="text" formControlName="plantilla_modificada"/>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field appearance="" style="width: 100%;">
+            <mat-label>Cantidad</mat-label>
+            <input matInput
+            (keyup)='ChangeCantidad(form.value.cantidad)' 
+            type="number" formControlName="cantidad"/>
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-6">
+        <mat-form-field appearance="" style="width: 100%;">
+            <mat-label>Selecciona</mat-label>
+            <input matInput type="text" formControlName="nombre_categoria"/>
+        </mat-form-field>
+      </div> -->
+      <!-- <div class="col-6">
+        <mat-form-field appearance="" style="width: 100%;">
+            <mat-label>Nombre Categoria</mat-label>
+            <input matInput type="text" formControlName="nombre_categoria"/>
+        </mat-form-field>
+      </div> -->
+      <div class="col-12 text-center" *ngIf="precio !== '0' && precio !== null"> 
+        <h1><b>Precio {{precio}} $</b></h1>
+      </div>
+      <div class="col-12 text-center">
+        <button mat-raised-button class="mr-3" 
+        color="primary" type="submit"
+        (click)="guardarBorrador(form.value)">Guardar como Borrador</button>
+
+        <button
+        mat-raised-button color="primary" type="submit"
+        [disabled]="precio === '0'"
+        (click)="comprar(form.value)">Pagar</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
