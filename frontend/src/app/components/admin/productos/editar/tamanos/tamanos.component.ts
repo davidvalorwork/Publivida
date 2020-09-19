@@ -31,13 +31,7 @@ export class TamanosComponent implements OnInit {
         private tamanoService:TamanoService,
     ){
         console.log(data)
-        this.tamanoService.getByCondition(
-            {condicion:{where:{productoIdProductos:data.id_productos,borrado:0}}}
-        )
-        .subscribe((response)=>{
-            console.log(response.payload)
-            this.dataSource = response.payload
-        })
+        
     }
     buscar(event:any){
         const categories = this.categorias;
@@ -59,11 +53,18 @@ export class TamanosComponent implements OnInit {
         }
     }
     ngOnInit(){
-      
+        this.tamanoService.getByCondition(
+            {condicion:{where:{productoIdProductos:this.data.id_productos,borrado:0}}}
+        )
+        .subscribe((response)=>{
+            console.log(response.payload)
+            this.dataSource = response.payload
+        })
     }
-    crear(){
+    crear(  ){
         const dialogRef = this.dialog.open(CrearTamanoComponent, {
             width: '400px',
+            data:this.data
           });
       
           dialogRef.afterClosed().subscribe(result => {
@@ -81,6 +82,7 @@ export class TamanosComponent implements OnInit {
             if(result==="true"){
                 this.loadingBar.start()
                 this.tamanoService.delete(id).subscribe((response:any)=>{
+                    console.log(response)
                     this.loadingBar.complete()
                     this.snackBar.success("Tamaño eliminado.","")
                     this.ngOnInit();
