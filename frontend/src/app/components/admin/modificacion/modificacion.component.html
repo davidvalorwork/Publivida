@@ -243,7 +243,11 @@
         </div>
         <div class="col-xl-7" style="background-color: white;">
             <div class="row mt-4">
-                <div class="col-2 text-right" *ngIf="!canvas.selected">
+                <div class="col-9 text-center">
+                    <angular-editor-fabric-js #canvas></angular-editor-fabric-js>
+                </div>
+
+                <div class="col-3 text-left" *ngIf="!canvas.selected">
                     <div  *ngFor="let plantilla of plantillas; let i = index">
                         <div (click)="canvas.props.canvasImage = url_api+plantilla;setCanvasImage();plantillaSelected=i"
                             >
@@ -252,10 +256,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-10 text-center">
-                        <angular-editor-fabric-js #canvas></angular-editor-fabric-js>
-
-                </div>
+                
                 
 
             </div>

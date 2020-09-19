@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { fabric } from 'fabric';
+import {SnackBar} from "../../../../services/snackbar.service"
 
 @Component({
   selector: 'angular-editor-fabric-js',
@@ -40,7 +41,9 @@ export class FabricjsEditorComponent implements AfterViewInit {
   public figureEditor = false;
   public selected: any;
 
-  constructor() { }
+  constructor(
+    private snackbar:SnackBar
+  ) { }
 
   ngAfterViewInit(): void {
 
@@ -185,7 +188,11 @@ export class FabricjsEditorComponent implements AfterViewInit {
   }
 
   readUrl(event) {
-    console.log(event)
+    console.log(event.target.files)
+    event.target.files[0].size>20000?this.setImageForClick(event):this.snackbar.err('La imagen posee muy baja calidad',"X")
+  }
+
+  setImageForClick(event){
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (readerEvent) => {
