@@ -9,7 +9,50 @@
                         <span style="color:#007bff">Producto</span>
                     </ng-template>
                     <div *ngIf="product" class="text-center card" style="width: 97%;">
-                        
+                        <br>
+                        <div *ngIf="product.colores_primarios">
+                            <p style="
+                            color:rgba(153,153,153);
+                            font-size: 20px;
+                            ">Color</p>
+                            <div class="product-color">											
+                                <input type="radio" name="product_color" class="hidden-input"
+                                    id="product-black">
+                                <label for="product-black" class="product-color-select"
+                                    id="black-color"></label>
+                                    
+                                <input type="radio" name="product_color" class="hidden-input"
+                                    id="product-grey">
+                                <label for="product-grey" class="product-color-select"
+                                    id="grey-color"></label>
+                                    
+                                <input type="radio" name="product_color" class="hidden-input"
+                                    id="product-orange">
+                                <label for="product-orange" class="product-color-select"
+                                    id="orange-color"></label>
+                                    
+                                <input type="radio" name="product_color" class="hidden-input"
+                                    id="product-magenta-blue">
+                                <label for="product-magenta-blue" class="product-color-select"
+                                    id="magenta-blue-color"></label>
+                                    
+                                <input type="radio" name="product_color" class="hidden-input"
+                                    id="product-cyan-blue">
+                                <label for="product-cyan-blue" class="product-color-select"
+                                    id="cyan-blue-color"></label>
+                                    
+                                <input type="radio" name="product_color" class="hidden-input"
+                                    id="product-green">
+                                <label for="product-green" class="product-color-select"
+                                    id="green-color"></label>
+                                    
+                                <input type="radio" name="product_color" class="hidden-input"
+                                    id="product-white">
+                                <label for="product-white" class="product-color-select"
+                                    id="white-color"></label>
+                            </div>
+                        </div>
+
                         <br>
                             <p style="
                             color:rgba(153,153,153);

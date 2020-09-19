@@ -80,21 +80,30 @@ export class ModificacionComponent implements OnInit {
 
   lookInPrecios(cantidad:number){
     console.log(cantidad)
+    let cambio = false
     for(let i in this.rango_precios){
       const rango = this.rango_precios[i]
       console.log(rango)
       if(rango.cantidad_desde <= cantidad &&
         rango.cantidad_hasta >= cantidad &&
         cantidad < this.stock_disponible){
+          console.log("RANGO AQUI")
           const precio = rango.valor_unitario * cantidad;
           this.precio = precio.toString()
           this.form.controls.precioIdPrecios.setValue(rango.id_precios);
           this.id_precios = rango.id_precios
+          cambio=true
         }else{ 
-          this.precio = '0'
+          if(cantidad > this.stock_disponible){
+            this.precio = '0'
+          }
           this.stock_disponible<cantidad?this.snackBar.err("No hay suficiente stock para su demanda","")
           :null
         }
+      
+    }
+    if(!cambio){
+      this.precio="0"
     }
   }
 
