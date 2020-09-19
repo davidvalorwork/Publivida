@@ -70,7 +70,7 @@ export class TamanosComponent implements OnInit {
     // }
     crear(){
         const dialogRef = this.dialog.open(CrearTamanoComponent, {
-            width: '70%',
+            width: '400px',
           });
       
           dialogRef.afterClosed().subscribe(result => {

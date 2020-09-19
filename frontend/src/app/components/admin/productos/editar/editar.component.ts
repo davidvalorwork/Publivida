@@ -117,7 +117,7 @@ export class EditarProductoComponent implements OnInit{
     openDialogTamanos(){
         this.dialog.open(TamanosComponent,{
             data:this.data,
-            width:"400px"
+            width:"70%"
         })
     }
 }
