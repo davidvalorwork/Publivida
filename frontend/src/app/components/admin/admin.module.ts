@@ -25,6 +25,8 @@ import {VerPreciosComponent} from './precios/ver/ver.component'
 import {EditarPreciosComponent} from './precios/editar/editar.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { PagosModalComponent } from './usuarios/pagos-modal/pagos-modal.component';
+import { TamanosComponent } from './productos/editar/tamanos/tamanos.component';
+import { CrearTamanoComponent } from './productos/editar/tamanos/crear-tamano/crear-tamano.component';
 // import { NgxChartsModule }from '@swimlane/ngx-charts';
 
 
@@ -60,6 +62,8 @@ import { PagosModalComponent } from './usuarios/pagos-modal/pagos-modal.componen
     PreciosComponent,
     PagosComponent,
     PagosModalComponent,
+    TamanosComponent,
+    CrearTamanoComponent,
   ]
 })
 export class AdminComponentsModule {}

@@ -3,10 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { SnackBar} from '../../../../services/snackbar.service';
 import {ProductosService} from '../../../../services/productos.service'
-import {MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog'
+import {MatDialog, MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog'
 import {UploadService} from '../../../../services/upload.service'
 import {environment} from '../../../../../environments/environment'
-
+import {TamanosComponent} from './tamanos/tamanos.component'
 
 @Component({
     selector:'editar-producto',
@@ -39,6 +39,7 @@ export class EditarProductoComponent implements OnInit{
         private loadingBar: LoadingBarService,
         private snackBar: SnackBar,
         @Inject(MAT_DIALOG_DATA) public data: any,
+        private dialog :MatDialog,
         public dialogRef: MatDialogRef<EditarProductoComponent>,
         // private router:Router,
         ) { }
@@ -113,4 +114,10 @@ export class EditarProductoComponent implements OnInit{
         })
     }
 
+    openDialogTamanos(){
+        this.dialog.open(TamanosComponent,{
+            data:this.data,
+            width:"400px"
+        })
+    }
 }
