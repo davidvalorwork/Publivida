@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  // URL_API:"http://18.218.87.159:3002",
-  // URL_FRONT: "http://18.218.87.159/publivida"
-  URL_API:"http://localhost:3002",
-  URL_FRONT: "http://localhost:4200"
+  URL_API:"http://18.218.87.159:3002",
+  URL_FRONT: "http://18.218.87.159/publivida"
+  // URL_API:"http://localhost:3002",
+  // URL_FRONT: "http://localhost:4200"
 
 };
 

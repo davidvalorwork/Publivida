@@ -13,6 +13,7 @@ import {DetallesPedidosService} from '../../../services/detalles_pedidos..servic
 import {PreciosService} from '../../../services/precios.service'
 import {ProductosService} from '../../../services/productos.service'
 import {DataSource} from '@angular/cdk/collections';
+import {VerComponent} from '../../../components/user/pedidos/ver/ver.component'
 
 @Component({
   selector: 'app-pagos',
@@ -24,7 +25,7 @@ export class PagosComponent implements OnInit {
     // @ViewChild(MatSort) sort: MatSort;
     dataSource:DataSource<any>;
     nodata:boolean=false
-    displayedColumns: string[] = ['usuario','fecha_pedido','producto','cantidad','precio' ,'estado'];
+    displayedColumns: string[] = ['usuario','fecha_pedido','producto','cantidad','precio' ,'estado', 'opciones'];
     categorias:any=[];
     constructor(
         private categoriaService:CategoriaService,
@@ -113,6 +114,13 @@ export class PagosComponent implements OnInit {
             }
             
         });
+    }
+    verPedidos(verPedidos){
+        console.log(verPedidos)
+        const dialogRef = this.dialog.open(VerComponent, {
+            width: '80%',
+            data:verPedidos
+          });
     }
     setCategoria(id:string){localStorage.setItem('categoria',id)}   
 }
