@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { SnackBar} from '../../../../../services/snackbar.service';
 import {Router} from '@angular/router';
-// import { DataSource, MatPaginator, Mat} from '@angular/cdk/table';
 import {CategoriaService} from '../../../../../services/categorias.service'
 import {MatDialog, MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog'
 import {CrearTamanoComponent} from './crear-tamano/crear-tamano.component'
@@ -17,6 +16,7 @@ import {DesicionComponent} from '../../../../utils/desicion/desicion.component';
 export class TamanosComponent implements OnInit {
     // @ViewChild(MatPaginator) paginator: MatPaginator;
     // @ViewChild(MatSort) sort: MatSort;
+    colores:boolean=false;
     dataSource:any;
     displayedColumns: string[] = ['nombre_categoria', 'estado','options'];
     categorias:any;
@@ -28,6 +28,8 @@ export class TamanosComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: any,
         public dialog: MatDialog  
     ){
+        console.log(data)
+        
     }
     buscar(event:any){
         const categories = this.categorias;
@@ -59,15 +61,6 @@ export class TamanosComponent implements OnInit {
             err=>console.log(err));
         
     }
-    // editar(element:any){
-    //     const dialogRef = this.dialog.open(EditarComponent, {
-    //         width:'400px',
-    //         data:element
-    //     });
-    //     dialogRef.afterClosed().subscribe(result=>{
-    //         this.ngOnInit();
-    //     });
-    // }
     crear(){
         const dialogRef = this.dialog.open(CrearTamanoComponent, {
             width: '400px',

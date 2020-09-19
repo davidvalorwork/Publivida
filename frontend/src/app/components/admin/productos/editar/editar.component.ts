@@ -42,7 +42,9 @@ export class EditarProductoComponent implements OnInit{
         private dialog :MatDialog,
         public dialogRef: MatDialogRef<EditarProductoComponent>,
         // private router:Router,
-        ) { }
+        ) {
+            console.log(data.colores_primarios)
+        }
 
         ngOnInit(): void {
             console.log(this.data)
