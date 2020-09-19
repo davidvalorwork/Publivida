@@ -19,7 +19,7 @@ export class EditarProductoComponent implements OnInit{
     filesProduct  = []; 
     filesPlantilla  = []; 
     url_api:string = `${environment.URL_API}/`
-
+    colores:boolean=false;
     imgRoute = `${environment.URL_API}/uploads/38a1be0c1416e6bd23e706e3535f3e95`
 
     form:FormGroup = this.fb.group({
@@ -29,7 +29,8 @@ export class EditarProductoComponent implements OnInit{
         descripcion_producto:[this.data.descripcion_producto, Validators.required],
         borrado:[this.data.borrado],
         nombre_id:['id_productos'],
-        categoriaIdCategorias:[localStorage.getItem("categoria")]
+        categoriaIdCategorias:[localStorage.getItem("categoria")],
+        colores_primarios:[]
     })
 
         constructor(
@@ -43,7 +44,9 @@ export class EditarProductoComponent implements OnInit{
         public dialogRef: MatDialogRef<EditarProductoComponent>,
         // private router:Router,
         ) {
-            console.log(data.colores_primarios)
+            if(data.colores_primarios!==''){
+                this.form.controls.colores_primarios.setValue(true)
+            }
         }
 
         ngOnInit(): void {
@@ -64,6 +67,7 @@ export class EditarProductoComponent implements OnInit{
         console.log(this.filesPlantilla.join(','))
         producto.urls_img = this.filesProduct.join(",")
         producto.urls_plantilla = this.filesPlantilla.join(',')
+        producto.colores_primarios?producto.colores_primarios = true: producto.colores_primarios = ""
         this.loadingBar.start()
         this.productoService.edit(producto.id_productos,producto).subscribe((response)=>{
             console.log(response)      

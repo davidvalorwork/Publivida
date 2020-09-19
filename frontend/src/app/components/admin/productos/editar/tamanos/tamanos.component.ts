@@ -7,6 +7,7 @@ import {CategoriaService} from '../../../../../services/categorias.service'
 import {MatDialog, MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog'
 import {CrearTamanoComponent} from './crear-tamano/crear-tamano.component'
 import {DesicionComponent} from '../../../../utils/desicion/desicion.component';
+import {TamanoService} from '../../../../../services/tamanos.service'
 
 @Component({
   selector: 'app-tamanos',
@@ -16,9 +17,9 @@ import {DesicionComponent} from '../../../../utils/desicion/desicion.component';
 export class TamanosComponent implements OnInit {
     // @ViewChild(MatPaginator) paginator: MatPaginator;
     // @ViewChild(MatSort) sort: MatSort;
-    colores:boolean=false;
+    
     dataSource:any;
-    displayedColumns: string[] = ['nombre_categoria', 'estado','options'];
+    displayedColumns: string[] = ['nombre_categoria', 'options'];
     categorias:any;
     constructor(
         private categoriaService:CategoriaService,
@@ -26,10 +27,17 @@ export class TamanosComponent implements OnInit {
         private snackBar: SnackBar,
         private router:Router,  
         @Inject(MAT_DIALOG_DATA) public data: any,
-        public dialog: MatDialog  
+        public dialog: MatDialog,
+        private tamanoService:TamanoService,
     ){
         console.log(data)
-        
+        this.tamanoService.getByCondition(
+            {condicion:{where:{productoIdProductos:data.id_productos,borrado:0}}}
+        )
+        .subscribe((response)=>{
+            console.log(response.payload)
+            this.dataSource = response.payload
+        })
     }
     buscar(event:any){
         const categories = this.categorias;
@@ -51,15 +59,7 @@ export class TamanosComponent implements OnInit {
         }
     }
     ngOnInit(){
-        this.loadingBar.start()
-            this.categoriaService.getCategorias().subscribe((response)=>{
-                this.loadingBar.complete();
-                this.categorias = response.payload;
-                this.dataSource = this.categorias
-                console.log(this.categorias)
-            },
-            err=>console.log(err));
-        
+      
     }
     crear(){
         const dialogRef = this.dialog.open(CrearTamanoComponent, {
@@ -73,16 +73,16 @@ export class TamanosComponent implements OnInit {
     eliminar(id:string){
         const dialogRef = this.dialog.open(DesicionComponent, {
             width: '400px',
-            data:{text:"¿Desea eliminar esta categoria?"}
+            data:{text:"¿Desea eliminar este tamaños?"}
           });
       
         dialogRef.afterClosed().subscribe(result => {
             console.log(result)
             if(result==="true"){
                 this.loadingBar.start()
-                this.categoriaService.delete(id).subscribe((response:any)=>{
+                this.tamanoService.delete(id).subscribe((response:any)=>{
                     this.loadingBar.complete()
-                    this.snackBar.success("Categoria eliminada.","")
+                    this.snackBar.success("Tamaño eliminado.","")
                     this.ngOnInit();
                 })
             }else{
@@ -91,5 +91,5 @@ export class TamanosComponent implements OnInit {
             
         });
     }
-    setCategoria(id:string){localStorage.setItem('categoria',id)}   
+    setCategoria(id:string){localStorage.setItem('tamaños',id)}   
 }
