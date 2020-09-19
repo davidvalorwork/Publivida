@@ -6,6 +6,7 @@ const precios = require('./precios.routes')
 const pedidos = require('./pedidos.routes')
 const detallespedidos = require('./detalle-pedidos.routes')
 const reportes = require('./reportes.routes')
+const tamanos = require('./tamanos.routes')
 
 module.exports = (app,db,protegerRutas,multer) => {
     auth(app,db);
@@ -16,4 +17,5 @@ module.exports = (app,db,protegerRutas,multer) => {
     pedidos(app,db);
     detallespedidos(app,db);
     reportes(app,db);
+    tamanos(app,db);
 }

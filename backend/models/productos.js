@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       urls_plantilla:{
         type:DataTypes.STRING,
       },
+      colores_primarios:{
+        type:DataTypes.STRING,
+      },
       borrado:{
         type: DataTypes.INTEGER,
       },
@@ -30,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     );
     Productos.associate = (models) => {
         Productos.hasMany(models.precios);
+        Productos.hasMany(models.tamanos);
         Productos.belongsTo(models.categorias);
     };
     return Productos;

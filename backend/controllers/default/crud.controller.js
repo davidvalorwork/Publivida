@@ -13,7 +13,7 @@ module.exports = {
   findByCondition: (table,condition,res)=>{
     console.log(condition)
     table.findAll(condition)
-      .then(result=>messages.success(result,res))
+      .then(result=>{console.log(result);messages.success(result,res)})
       .catch(err=>messages.error(err,res))
   },
   create: (table, req, res) => {

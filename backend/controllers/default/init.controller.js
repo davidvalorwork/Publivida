@@ -25,6 +25,13 @@ const inicializar = async(db) => {
         tiposUsuarioIdTiposUsuarios:3,
         borrado:0
     }
+    const usuario={
+        usuario: 'prueba',
+        clave: '$2a$10$a4JzBQ1c/VLBSLgdVJ3X9uo7/oUSFBvnycRiv4GQS1DppK1EGn7KK',
+        correo: 'prueba',
+        tiposUsuarioIdTiposUsuarios:1,
+        borrado:0
+    }
     await db.tipos_usuarios.create(tipo_persona).then(result=>console.log("Tipo de usuario: Usuario. Insertado"))
         .catch(err=>console.log(err));
     await db.tipos_usuarios.create(tipo_empresa).then(result=>console.log("Tipo de usuario: Empresa. Insertado"))
@@ -52,4 +59,43 @@ const inicializar = async(db) => {
         .catch(err=>console.log(err));
     await db.estados_pedidos.create(estado_pedido_pago).then(result=>console.log("Creado Estado Pedido Pago."))
         .catch(err=>console.log(err));
+
+
+    // CATEGORIAS
+    await db.categorias.create({nombre_categoria:"Bolso",borrado:0})    //1
+    await db.categorias.create({nombre_categoria:"Cartera",borrado:0})  //2
+    await db.categorias.create({nombre_categoria:"Lentes",borrado:0})   //3
+    await db.categorias.create({nombre_categoria:"Camisa",borrado:0})   //4
+    await db.categorias.create({nombre_categoria:"Pantalon",borrado:0}) //5
+    await db.categorias.create({nombre_categoria:"Zapato",borrado:0})   //6
+    await db.categorias.create({nombre_categoria:"Gorra",borrado:0})    //7
+
+    // PRODUCTOS
+    const lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    let productos = [
+        {nombre_producto:"Bolso Gucci",stock:100,descripcion_producto:lorem,borrado:0},
+        {nombre_producto:"Cartera Gucci",stock:100,descripcion_producto:lorem,borrado:0},
+        {nombre_producto:"Lentes Aviador",stock:100,descripcion_producto:lorem,borrado:0},
+        {nombre_producto:"Luis Button",stock:100,descripcion_producto:lorem,borrado:0},
+        {nombre_producto:"Victoria Secret",stock:100,descripcion_producto:lorem,borrado:0},
+        {nombre_producto:"Nike",stock:100,descripcion_producto:lorem,borrado:0},
+        {nombre_producto:"Adidas",stock:100,descripcion_producto:lorem,borrado:0},
+    ]
+    // categoriaIdCategorias: 1,
+    for(let i in productos){
+        productos[i].categoriaIdCategorias = i+1;
+        await db.productos.create(productos[i]).then(result=>{
+            console.log(result)
+        })
+    }
+
+    await db.precios.create(
+        {
+            nombre_precio: "Rango1",
+            cantidad_desde:1,
+            cantidad_hasta:5,
+            valor_unitario:10000,
+            borrado:0,
+        }
+    )
 }

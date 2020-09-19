@@ -35,7 +35,7 @@ const protegerRutas = jwtMiddleware.protegerRutas(app,express,jwt);
 api(app,db,protegerRutas,upload);
 
 db.sequelize.sync().then(() => {
-  app.listen(3002,() => console.log("¡API escuchando en el puerto 3001!"));
+  app.listen(3001,() => console.log("¡API escuchando en el puerto 3001!"));
   init.verificar(db);
 });
 
