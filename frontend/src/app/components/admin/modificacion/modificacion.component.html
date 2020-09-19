@@ -50,7 +50,7 @@
                         <mat-icon style="color:#007bff">subject</mat-icon>
                         <span style="color:#007bff">Texto</span>
                     </ng-template>
-                    <div class="row">
+                    <div class="row" style="width: 99%;">
 
                     
                     <div class="col-xl-12 col-md-6">
@@ -58,9 +58,9 @@
                             <!-- <div class="card-header">Añadir Texto</div> -->
                             <p style="
                             text-align: center;
-                            margin-top: 20px;
+                            margin-top: 5px;
                             color:rgba(153,153,153);
-                            font-size: 20px;
+                            font-size: 15px;
                             ">Añadir Texto</p>
                             <div class="card-body">
                                 <div class="input-group">
@@ -77,29 +77,22 @@
                         </div>
                         <br/>
                     </div>
-                    <div class="col-xl-12 col-md-6">
+                    <div class="col-xl-12 col-md-6" style="margin-top: 0px;">
                         <div class="card">
                             <!-- <div class="card-header">Edición</div> -->
                             <p style="
                             text-align: center;
-                            margin-top: 20px;
                             color:rgba(153,153,153);
-                            font-size: 20px;
+                            font-size: 15px;
                             ">Edición</p>
                             <div class="card-body">
                                 <div class="custom-item" *ngIf="canvas.selected  && canvas.selected.type == 'group'">Group Selected</div>
-                                <!-- <div class="custom-item" *ngIf="!canvas.selected">Seleccione un elemento</div> -->
                                 <div class="custom-item" *ngIf="canvas.selected && canvas.selected.type != 'group'">
                                     <div class="custom-item-title">ID</div>
                                     <div class="custom-item-body">
                                         <input type="text" class="form-control" [(ngModel)]="canvas.props.id" (keyup)="setId()">
                                     </div>
                                 </div>
-                                <!-- <div class="custom-item">
-                                    <div class="custom-item-title">Opacity</div>
-                                    <div class="custom-item-body">
-                                        <input type="range" [(ngModel)]="canvas.props.opacity" (change)="setOpacity()">{{canvas.props.opacity}}</div>
-                                </div> -->
                                 <div class="custom-item" >
                                     <div class="custom-item-title">Color</div>
                                     <div class="custom-item-body">
