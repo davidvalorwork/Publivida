@@ -40,6 +40,8 @@ const inicializar = async(db) => {
         .catch(err=>console.log(err));
     await db.usuarios.create(usuario_admin).then(result=>console.log("Usuario admin 12345678 insertado."))
         .catch(err=>console.log(err));
+    await db.usuarios.create(usuario).then(result=>console.log("Usuario admin 12345678 insertado."))
+        .catch(err=>console.log(err));
 
     const estado_pedido_borrador = {
         nombre_estado_pedido:'Borrador',
