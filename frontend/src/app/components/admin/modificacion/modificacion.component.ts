@@ -20,6 +20,13 @@ import {TamanoService} from '../../../services/tamanos.service'
   styleUrls: ['./modificacion.component.css']
 })
 export class ModificacionComponent implements OnInit {
+  textos=[];
+  colores=[];
+  fonts=[];
+  imagenes_subidas=[];
+  color;
+  tamano_nombre;
+
   title = 'angular-editor-fabric-js';
   url_api = `${environment.URL_API}/`
   plantillas = [];
@@ -206,6 +213,8 @@ export class ModificacionComponent implements OnInit {
   }
 
   public addText() {
+    // console.log(this.canvas.textString);
+    this.textos.push(this.canvas.textString);
     this.canvas.addText();
   }
 
@@ -218,6 +227,18 @@ export class ModificacionComponent implements OnInit {
   }
 
   public readUrl(event) {
+    console.log(event.target.files[0])
+    const fileData = event.target.files[0];
+    let bodyFormData = new FormData();  
+    bodyFormData.append("file", fileData,fileData.name);  
+    
+    this.uploadService.upload(bodyFormData).subscribe((response:any)=>{
+      this.loadingBar.complete()
+      // this.snackBar.success("Archivo subido.","x")
+      console.log(response.payload)
+      this.imagenes_subidas.push(response.payload)
+      // this.plantillas[this.plantillaSelected] = response.payload
+    })
     this.canvas.readUrl(event);
   }
 
@@ -266,10 +287,14 @@ export class ModificacionComponent implements OnInit {
   }
 
   public setFill() {
+    console.log(this.canvas.props.fill)
+    this.colores.push(this.canvas.props.fill)
     this.canvas.setFill();
   }
 
   public setFontFamily() {
+    console.log(this.canvas.props.fontFamily)
+    this.fonts.push(this.canvas.props.fontFamily)
     this.canvas.setFontFamily();
   }
 
@@ -361,6 +386,17 @@ export class ModificacionComponent implements OnInit {
     // const blob = new Blob([int8Array], { type: 'image/png' });    
     const blob = new Blob([byteArray], { type: 'image/png' });    
     return blob;
+ }
+
+
+ setColor(color:string){
+   console.log(color)
+   this.color = color
+ }
+
+ tamano(tamano){
+   console.log(tamano.value)
+   this.tamano_nombre = tamano.value
  }
 
 

@@ -17,46 +17,48 @@
                             ">Color</p>
                             <div class="product-color">											
                                 <input type="radio" name="product_color" class="hidden-input"
-                                    id="product-black">
+                                    id="product-black" (click)="setColor('Negro')">
                                 <label for="product-black" class="product-color-select"
-                                    id="black-color"></label>
+                                    id="black-color" ></label>
                                     
                                 <input type="radio" name="product_color" class="hidden-input"
-                                    id="product-grey">
+                                    id="product-grey" (click)="setColor('Gris')">
                                 <label for="product-grey" class="product-color-select"
-                                    id="grey-color"></label>
+                                    id="grey-color" ></label>
                                     
                                 <input type="radio" name="product_color" class="hidden-input"
-                                    id="product-orange">
+                                    id="product-orange" (click)="setColor('Naranja')" >
                                 <label for="product-orange" class="product-color-select"
-                                    id="orange-color"></label>
+                                    id="orange-color" ></label>
                                     
                                 <input type="radio" name="product_color" class="hidden-input"
-                                    id="product-magenta-blue">
+                                    id="product-magenta-blue" (click)="setColor('Morado')"  >
                                 <label for="product-magenta-blue" class="product-color-select"
-                                    id="magenta-blue-color"></label>
+                                    id="magenta-blue-color" ></label>
                                     
                                 <input type="radio" name="product_color" class="hidden-input"
-                                    id="product-cyan-blue">
+                                    id="product-cyan-blue" (click)="setColor('Azul')" >
                                 <label for="product-cyan-blue" class="product-color-select"
-                                    id="cyan-blue-color"></label>
+                                    id="cyan-blue-color" ></label>
                                     
                                 <input type="radio" name="product_color" class="hidden-input"
-                                    id="product-green">
+                                    id="product-green" (click)="setColor('Verde')" >
                                 <label for="product-green" class="product-color-select"
-                                    id="green-color"></label>
+                                    id="green-color" ></label>
                                     
                                 <input type="radio" name="product_color" class="hidden-input"
-                                    id="product-white">
+                                    id="product-white" (click)="setColor('Blanco')" >
                                 <label for="product-white" class="product-color-select"
-                                    id="white-color"></label>
+                                    id="white-color" style="border:1px solid black"></label>
                             </div>
+                            <br>
+                            {{color}}
                         </div>
                         <div *ngIf="tamanos.length !== 0" class="mt-4">
                             <mat-form-field appearance="outline">
                                 <mat-label>Tamaños</mat-label>
-                                <mat-select>
-                                  <mat-option *ngFor="let tamano of tamanos" [value]="tamano.id_tamanos">
+                                <mat-select (selectionChange)="tamano($event)">
+                                  <mat-option *ngFor="let tamano of tamanos" [value]="tamano.nombre_tamano">
                                     {{tamano.nombre_tamano}}
                                   </mat-option>
                                 </mat-select>
@@ -120,7 +122,9 @@
                                     <input type="text" class="form-control" [(ngModel)]="canvas.textString">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
-                                            <button id="add-text" data-toggle="tooltip" data-placement="bottom" title="Add text" class="btn btn-primary" (click)="addText()">
+                                            <button id="add-text" data-toggle="tooltip" 
+                                            data-placement="bottom" title="Add text" class="btn btn-primary" 
+                                            (click)="addText()">
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </button>
                                         </span>
@@ -149,8 +153,10 @@
                                 <div class="custom-item" >
                                     <div class="custom-item-title">Color</div>
                                     <div class="custom-item-body">
-                                        <input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="canvas.props.fill" [style.background]="canvas.props.fill"
-                                            [value]="canvas.props.fill" (colorPickerChange)="setFill()">
+                                        <input type="text" class="form-control" 
+                                        [cpPosition]="'bottom'" [(colorPicker)]="canvas.props.fill" 
+                                        [style.background]="canvas.props.fill"
+                                             (colorPickerChange)="setFill()">
                                     </div>
                                 </div>
                                 <div class="custom-item" >
