@@ -18,7 +18,7 @@ export class CategoriasComponent implements OnInit {
     // @ViewChild(MatPaginator) paginator: MatPaginator;
     // @ViewChild(MatSort) sort: MatSort;
     dataSource:any;
-    displayedColumns: string[] = ['nombre_categoria', 'estado','options'];
+    displayedColumns: string[] = ['nombre_categoria','options'];
     categorias:any;
     constructor(
         private categoriaService:CategoriaService,
@@ -98,4 +98,20 @@ export class CategoriasComponent implements OnInit {
         });
     }
     setCategoria(id:string){localStorage.setItem('categoria',id)}   
+
+    borradoToggle(id_categorias:string,boolean:boolean){
+        console.log(id_categorias)
+        console.log(boolean)
+        if(boolean){
+            this.categoriaService.delete(id_categorias)
+            .subscribe((response)=>{
+                this.ngOnInit()
+            })
+        }else{
+            this.categoriaService.activar(id_categorias).subscribe((response:any)=>{
+                console.log(response)
+                this.ngOnInit()
+            })
+        }
+    }
 }

@@ -29,7 +29,7 @@ export class UsuarioComponent  {
   ) {
     const id_usuarios = localStorage.getItem("id_usuarios")
     console.log(id_usuarios)
-    this.categoriaService.getCategorias().subscribe((response:any)=>{
+    this.categoriaService.getByCondition({condition:{where:{borrado:0}}}).subscribe((response:any)=>{
       this.categorias = response.payload
     })
     if(id_usuarios){
@@ -41,10 +41,12 @@ export class UsuarioComponent  {
         this.nombre_usuario = response.payload.usuario
       })
     }
-    this.categoriaService.getCategorias().subscribe((response:any)=>{
+    this.categoriaService.getByCondition({condition:{where:{borrado:0}}})
+    .subscribe((response:any)=>{
+      console.log(response)
       this.categorias2 = response.payload
 
-      this.productoService.get().subscribe((response:any)=>{
+      this.productoService.getByCondition({condicion:{where:{borrado:0}}}).subscribe((response:any)=>{
         this.productos = response.payload
         for(let i in this.categorias){
           this.categorias[i].productos = []

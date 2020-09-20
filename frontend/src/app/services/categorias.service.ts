@@ -18,8 +18,15 @@ export class CategoriaService {
     return this.http.get(`${environment.URL_API}/categorias/${id}`)
   }
 
+  getByCondition(condition:any): Observable<any>{
+    return this.http.post(`${environment.URL_API}/categorias/condition`,condition)
+  }
+
   createCategorias(categoria:any): Observable<any>{
     return this.http.post(`${environment.URL_API}/categorias/`,categoria)
+  }
+  activar(id:string): Observable<any>{
+    return this.http.post(`${environment.URL_API}/categorias/activar`,{id})
   }
 
   delete(id:string):Observable<any>{

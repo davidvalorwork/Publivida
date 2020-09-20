@@ -28,7 +28,7 @@ export class ProductosComponent implements OnInit {
     this.categoriaService.getCategorias().subscribe((response:any)=>{
       this.categorias = response.payload
 
-      this.productoService.get().subscribe((response:any)=>{
+      this.productoService.getByCondition({condicion:{where:{borrado:0}}}).subscribe((response:any)=>{
         this.productos = response.payload
         for(let i in this.categorias){
           this.categorias[i].productos = []

@@ -1,7 +1,7 @@
 const messages = require('./messages.controller');
 module.exports = {
   findAll: (table, req, res) => {
-    table.findAll({where:{borrado:0}})
+    table.findAll()
       .then((result) => messages.success(result, res))
       .catch((error) => messages.error(error, res))
   },
