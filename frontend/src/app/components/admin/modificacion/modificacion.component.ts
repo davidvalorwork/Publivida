@@ -169,6 +169,12 @@ export class ModificacionComponent implements OnInit {
             plantilla_modificada: this.plantillas.join(","),
             pedidoIdPedidos:response.payload.id_pedidos, 
             precioIdPrecios:this.id_precios,
+            textos:this.textos.join(","),
+            colores:this.colores.join(","),
+            fonts:this.fonts.join(","),
+            imagenes_subidas:this.imagenes_subidas.join(","),
+            color:this.color,
+            tamano_nombre:this.tamano_nombre,
           }
           localStorage.setItem("id_pedidos",response.payload.id_pedidos)
           this.detallePedidosService.crear(detalles_pedidos).subscribe((response:any)=>{
@@ -374,7 +380,7 @@ export class ModificacionComponent implements OnInit {
   
   dataURItoBlob(dataURI) {
     dataURI = dataURI.replace(/^data:image\/(png|jpg);base64,/, "");
-    console.log(dataURI)
+    console.log(dataURI);
     const byteString = window.atob(dataURI);
     
     const arrayBuffer = new ArrayBuffer(byteString.length);
@@ -390,13 +396,13 @@ export class ModificacionComponent implements OnInit {
 
 
  setColor(color:string){
-   console.log(color)
-   this.color = color
+   console.log(color);
+   this.color = color;
  }
 
  tamano(tamano){
-   console.log(tamano.value)
-   this.tamano_nombre = tamano.value
+   console.log(tamano.value);
+   this.tamano_nombre = tamano.value;
  }
 
 

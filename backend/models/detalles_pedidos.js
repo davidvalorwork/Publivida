@@ -11,6 +11,26 @@ module.exports = (sequelize, DataTypes) => {
       cantidad:{
         type: DataTypes.STRING,
       },
+
+      textos:{
+        type: DataTypes.STRING,
+      },
+      colores:{
+        type: DataTypes.STRING,
+      },
+      fonts:{
+        type: DataTypes.STRING,
+      },
+      imagenes_subidas:{
+        type: DataTypes.STRING,
+      },
+      color:{
+        type: DataTypes.STRING,
+      },
+      tamano_nombre:{
+        type: DataTypes.STRING,
+      },
+
       borrado:{
         type: DataTypes.INTEGER,
       },
