@@ -107,7 +107,8 @@ export class PedidosComponent implements OnInit {
     verPlantilla(plantilla){
         const dialogRef = this.dialog.open(VerComponent, {
             width: '80%',
-            data:plantilla
+            height:"80%",
+            data:{imagenes:plantilla}
           });
     }
     eliminar(id:string){

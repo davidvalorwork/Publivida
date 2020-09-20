@@ -115,11 +115,12 @@ export class PagosComponent implements OnInit {
             
         });
     }
-    verPedidos(verPedidos){
+    verPedidos(verPedidos,detalle){
         console.log(verPedidos)
         const dialogRef = this.dialog.open(VerComponent, {
             width: '80%',
-            data:verPedidos
+            height:"80%",
+            data:{imagenes:verPedidos,detalle}
           });
     }
     setCategoria(id:string){localStorage.setItem('categoria',id)}   
