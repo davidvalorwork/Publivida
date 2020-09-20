@@ -52,6 +52,16 @@
                                     id="white-color"></label>
                             </div>
                         </div>
+                        <div *ngIf="tamanos.length !== 0" class="mt-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Tamaños</mat-label>
+                                <mat-select>
+                                  <mat-option *ngFor="let tamano of tamanos" [value]="tamano.id_tamanos">
+                                    {{tamano.nombre_tamano}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </div>
 
                         <br>
                             <p style="

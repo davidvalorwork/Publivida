@@ -12,6 +12,7 @@ import {DetallesPedidosService} from '../../../services/detalles_pedidos..servic
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { SnackBar} from '../../../services/snackbar.service';
 import {PreciosService} from '../../../services/precios.service'
+import {TamanoService} from '../../../services/tamanos.service'
 
 @Component({
   selector: 'app-modificacion',
@@ -25,6 +26,7 @@ export class ModificacionComponent implements OnInit {
   plantillaSelected:number;
 
   product;
+  tamanos;
   cantidad:number=0
   form:FormGroup;
   id_precios:number;
@@ -45,6 +47,7 @@ export class ModificacionComponent implements OnInit {
     private loadingBar: LoadingBarService,
     private snackBar: SnackBar,
     private preciosService:PreciosService,
+    private tamanoService:TamanoService
   ){
     this.productoService.getByCondition({condicion:{where:{id_productos:localStorage.getItem("id_producto")}}}).subscribe((response)=>{
       this.product =response.payload[0]
@@ -129,6 +132,12 @@ export class ModificacionComponent implements OnInit {
       .subscribe((response:any)=>{
         this.loadingBar.complete()
         this.rango_precios = response.payload;
+      })
+
+      this.tamanoService.getByCondition({condicion:{
+        where:{productoIdProductos:localStorage.getItem("id_producto"),borrado:0}
+      }}).subscribe((response:any)=>{
+        this.tamanos = response.payload
       })
   }
 
