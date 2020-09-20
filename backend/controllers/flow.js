@@ -82,6 +82,34 @@ const flow = {
         const pedido = await db.pedidos.findOne({where:{id_pedidos:pago.dataValues.pedidoIdPedidos}})
         pedido.estadosPedidoIdEstadosPedidos = 3
         await pedido.save()
+        console.log(pedido)
+        const detalle = await db.detalles_pedidos.findOne({where:{pedidoIdPedidos:pedido.dataValues.id_pedidos}})
+        console.log(detalle)
+        const precio = await db.precios.findOne({where:{id_precios:detalle.dataValues.precioIdPrecios}})
+        console.log(precio)
+        const producto = await db.productos.findOne({where:{id_productos:precio.dataValues.productoIdProductos}})
+        producto.stock = parseInt(producto.stock) - parseInt(detalle.cantidad)
+        producto.save()
+        res.status(200).send("ok")
+    },
+    resultPrueba: async(db,req,res)=>{
+        console.log("Respuesta de pago realizado")
+        console.log(req.body.token)
+        const pago = await db.pagos.findOne({where:{id_pagos:1}})
+        console.log(pago)
+        pago.estado = "Pagado"
+        await pago.save()
+        const pedido = await db.pedidos.findOne({where:{id_pedidos:pago.dataValues.pedidoIdPedidos}})
+        pedido.estadosPedidoIdEstadosPedidos = 3
+        await pedido.save()
+        console.log(pedido)
+        const detalle = await db.detalles_pedidos.findOne({where:{pedidoIdPedidos:pedido.dataValues.id_pedidos}})
+        console.log(detalle)
+        const precio = await db.precios.findOne({where:{id_precios:detalle.dataValues.precioIdPrecios}})
+        console.log(precio)
+        const producto = await db.productos.findOne({where:{id_productos:precio.dataValues.productoIdProductos}})
+        producto.stock = parseInt(producto.stock) - parseInt(detalle.cantidad)
+        producto.save()
         res.status(200).send("ok")
     },
     pago_realizado: async(req,res)=>{
