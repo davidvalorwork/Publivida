@@ -23,7 +23,7 @@ export class ProductosComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
   dataSource:any;
-  displayedColumns: string[] = ['nombre_producto','stock','descripcion_producto', 'estado','options'];
+  displayedColumns: string[] = ['nombre_producto','stock','descripcion_producto','options'];
   productos:any;
   constructor(
       private productoService:ProductosService,
@@ -49,7 +49,7 @@ export class ProductosComponent implements OnInit {
   ngOnInit(){
     this.loadingBar.start()
     this.productoService.getByCondition({
-      condicion:{where:{categoriaIdCategorias:this.categoria, borrado:0}}
+      condicion:{where:{categoriaIdCategorias:this.categoria}}
     }).subscribe((response)=>{
         this.loadingBar.complete();
         this.productos = response.payload;
@@ -89,27 +89,27 @@ export class ProductosComponent implements OnInit {
     })
   }
   eliminar(id:string){
-  const dialogRef = this.dialog.open(DesicionComponent, {
-    width: '400px',
-    data:{text:"¿Desea eliminar esta categoria?"}
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    // console.log(result)
-    if(result==="true"){
-      this.loadingBar.start()
-      this.productoService.delete(id).subscribe((response:any)=>{
-        this.loadingBar.complete()
-        this.snackBar.success("Categoria eliminada.","")
-        this.ngOnInit();
-      })
+    this.loadingBar.start()
+    this.productoService.delete(id).subscribe((response:any)=>{
+      console.log(response)
+      this.loadingBar.complete()
       this.ngOnInit();
-    }else{
-      this.ngOnInit();
-    }
-  });
-}
+    })
+  }
 setProducto(id:string){
   localStorage.setItem("id_producto",id)
+}
+
+borradoToggle(id:string,boolean:boolean){
+  console.log(boolean)
+  if(boolean){
+    this.eliminar(id)
+  }else{
+    this.productoService.edit(id,{borrado:0,nombre_id:"id_productos"})
+    .subscribe(response=>{
+      console.log(response)
+      this.ngOnInit()
+    })
+  }
 }
 }
