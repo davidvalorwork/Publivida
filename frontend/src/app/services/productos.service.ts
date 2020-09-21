@@ -25,6 +25,10 @@ export class ProductosService {
     return this.http.post(`${environment.URL_API}/productos/`,producto)
   }
 
+  top(){
+    return this.http.get(`${environment.URL_API}/productos/top`)  
+  }
+
   delete(id:string):Observable<any>{
     return this.http.delete(`${environment.URL_API}/productos/${id}`)
   }

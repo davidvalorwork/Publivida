@@ -3,5 +3,5 @@
   "secretKey": "3a02689349840442bda7f846c915866e1db9d562",
   "apiURL": "https://sandbox.flow.cl/api",
   "baseURL": "http://18.218.87.159:3002",
-  "frontURL":"http://18.218.87.159/publivida"
+  "frontURL":"http://18.218.87.159/t"
 }

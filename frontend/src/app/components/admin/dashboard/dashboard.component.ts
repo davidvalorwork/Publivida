@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit {
     nodata:boolean=false
     displayedColumns: string[] = ['usuario','fecha_pedido','producto','cantidad','precio' ,'estado'];
     categorias:any=[];
+    top;
   
   numero_categorias:number;
   numero_productos:number;
@@ -58,6 +59,10 @@ export class DashboardComponent implements OnInit {
         private productosService: ProductosService,
     ){}
     ngOnInit(){
+      this.productosService.top().subscribe((response:any)=>{
+        console.log(response)
+        this.top = response.payload
+      })
       this.productosService.get().subscribe((response:any)=>{
         console.log(response.payload)
         this.productos = response.payload

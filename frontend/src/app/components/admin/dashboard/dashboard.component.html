@@ -180,13 +180,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- <tr *ngFor="let precio of rango_precios">
-                      <th scope="row">1</th>
-                      <td>{{precio.nombre_precio}}</td>
-                      <td>{{precio.cantidad_desde}}</td>
-                      <td>{{precio.cantidad_hasta}}</td>
-                      <td>{{precio.valor_unitario}} CLP</td>
-                    </tr> -->
+                    <tr *ngFor="let producto of top; let i = index">
+                      <th scope="row">{{i+1}}</th>
+                      <td>{{producto.nombre}}</td>
+                      <td>{{producto.ventas}}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
