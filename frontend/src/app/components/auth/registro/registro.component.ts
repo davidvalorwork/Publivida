@@ -23,8 +23,8 @@ export class RegistroComponent implements OnInit {
     rut: ['',[Validators.required]],
     clave:['', [Validators.required, Validators.minLength(8)]],
     rclave:['',Validators.required],
-    nombre:[''],
-    apellido:[''],
+    nombres:[''],
+    apellidos:[''],
     telefono:['',[Validators.required,Validators.pattern(/^[+]{1}-?(0|[1-9]\d*)?$/)]],
 
     razon_social:[''],
@@ -70,8 +70,8 @@ export class RegistroComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.form.controls.nombre.setValidators([Validators.required, Validators.pattern('^[a-zA-Z ]*$')])
-    this.form.controls.apellido.setValidators([Validators.required, Validators.pattern('^[a-zA-Z ]*$')])
+    this.form.controls.nombres.setValidators([Validators.required, Validators.pattern('^[a-zA-Z ]*$')])
+    this.form.controls.apellidos.setValidators([Validators.required, Validators.pattern('^[a-zA-Z ]*$')])
   }
 
   // CONTROLADOR USUARIO

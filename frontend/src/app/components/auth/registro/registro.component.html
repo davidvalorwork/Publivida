@@ -30,15 +30,15 @@
 								</div>
 								<div class="col-sm-6 mb-3 mb-sm-0">
 									<mat-form-field appearance="outline" style="width: 100%;"  *ngIf="!empresa">
-										<mat-label>Nombre</mat-label>
+										<mat-label>Nombres</mat-label>
 										<mat-icon matSuffix>account_circle</mat-icon>
 										<input type="text" matInput
-											formControlName="nombre" type="text" >
-										<mat-error *ngIf="form.get('nombre').hasError('required') 
-																&& form.get('nombre').dirty"
+											formControlName="nombres" type="text" >
+										<mat-error *ngIf="form.get('nombres').hasError('required') 
+																&& form.get('nombres').dirty"
 											class="error-form">Este campo es requerido</mat-error>
-										<mat-error *ngIf="form.get('nombre').hasError('pattern') 
-																&& form.get('nombre').dirty"
+										<mat-error *ngIf="form.get('nombres').hasError('pattern') 
+																&& form.get('nombres').dirty"
 											class="error-form">El nombre es invalido</mat-error>
 									</mat-form-field>
 
@@ -58,15 +58,15 @@
 							
 								<div class="col-sm-6">
 									<mat-form-field appearance="outline" style="width: 100%;" *ngIf="!empresa">
-										<mat-label>Apellido</mat-label>
+										<mat-label>Apellidos</mat-label>
 										<mat-icon matSuffix>account_circle</mat-icon>
 										<input type="text" matInput
-											formControlName="apellido" type="text" >
-										<mat-error *ngIf="form.get('apellido').hasError('required') 
-																&& form.get('apellido').dirty"
+											formControlName="apellidos" type="text" >
+										<mat-error *ngIf="form.get('apellidos').hasError('required') 
+																&& form.get('apellidos').dirty"
 											class="error-form">Este campo es requerido</mat-error>
-											<mat-error *ngIf="form.get('apellido').hasError('pattern') 
-																&& form.get('apellido').dirty"
+											<mat-error *ngIf="form.get('apellidos').hasError('pattern') 
+																&& form.get('apellidos').dirty"
 											class="error-form">El nombre es invalido</mat-error>
 									</mat-form-field>
 
