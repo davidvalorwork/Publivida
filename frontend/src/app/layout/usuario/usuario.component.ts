@@ -20,6 +20,7 @@ export class UsuarioComponent  {
   categorias = []
   nombre_usuario:string;
   categoria;
+  busqueda:string="";
 
   categorias2:any;
   productos:any;
@@ -79,6 +80,12 @@ export class UsuarioComponent  {
       this.filterService.updateData(categoria);
     },500)
   }
+  buscar2(){
+    setTimeout(()=>{
+      console.log(this.busqueda)
+      this.filterService.updateData(this.busqueda);
+    },500)
+  }
   search_array(array,valuetofind) {
     for (let i = 0; i < array.length; i++) {
         if (array[i]['id_categorias'] === valuetofind) {
@@ -86,5 +93,6 @@ export class UsuarioComponent  {
         }
     }
   }
+
 
 }

@@ -8,7 +8,7 @@ export class FilterService {
         return this.filter$;
     }
 
-    updateData(data: boolean) {
+    updateData(data:string) {
         this.filter$.next(data);
     }
 }
