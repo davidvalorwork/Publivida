@@ -45,7 +45,7 @@
     
     <div class="col-4">
       <mat-form-field appearance="outline">
-        <mat-label>Imagenes Subidas</mat-label>
+        <mat-label>Imágenes Subidas</mat-label>
         <mat-select (selectionChange)="descargarImg($event.value)">
           <mat-option *ngFor="let img of imagenes_subidas" [value]="img">
             {{img}}

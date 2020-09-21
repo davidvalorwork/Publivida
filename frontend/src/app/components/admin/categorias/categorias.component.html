@@ -3,7 +3,7 @@
     <li class="breadcrumb-item " aria-current="page" [routerLink]="['../']" routerLinkActive="router-link-active" 
     >Admin</li>
     <li class="breadcrumb-item " aria-current="page" 
-    >Categorias</li>
+    >Categorías</li>
   </ol>
 </nav>
 <!-- <p s>Usuarios</p> -->
@@ -25,7 +25,7 @@
       </div>
         <table mat-table [dataSource]="dataSource" >
             <ng-container matColumnDef="nombre_categoria">
-              <th mat-header-cell *matHeaderCellDef>Nombre Categoria </th>
+              <th mat-header-cell *matHeaderCellDef>Nombre Categoría </th>
               <td mat-cell *matCellDef="let element">
                 {{element.nombre_categoria}}
                 </td>
