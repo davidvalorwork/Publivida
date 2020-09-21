@@ -53,6 +53,31 @@ export class DetalleProductoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params) => {
+        console.log(params)
+        
+        
+        this.productoService.getByCondition({condicion:{where:{id_productos:params.id}}}).subscribe((response)=>{
+          this.product =response.payload[0]
+          console.log(this.product)
+          const urls = response.payload[0].urls_img.split(",")
+          this.stock_disponible = this.product.stock
+          this.imageObject = []
+          for(let i in urls){
+            const image ={
+              image:`${environment.URL_API}/${urls[i]}`,
+              thumbImage:`${environment.URL_API}/${urls[i]}`,
+              alt:"",
+            }
+            this.imageObject.push(image)
+          }
+          console.log(this.imageObject)
+        })
+        this.initForm();
+        // this.ngOnInit()
+      }
+    );
     this.preciosService.getByProductID({condition:{
       where:{productoIdProductos:this.route.snapshot.paramMap.get('id'),borrado:0}
     }})
