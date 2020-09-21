@@ -54,7 +54,12 @@
                 <div *ngIf="categoria.productos.length !== 0">
                   <ul class="dropdown"  
                     >
-                    <li *ngFor="let producto of categoria.productos"><a [routerLink]="[ '../../../detalle-producto/'+categoria.id_categorias ]">{{producto.nombre_producto}}</a></li>
+                    <li *ngFor="let producto of categoria.productos">
+                      <a [routerLink]="[ '../../../detalle-producto/'+producto.id_productos ]"
+                      *ngIf="producto.nombre_producto.length >17">{{producto.nombre_producto.substring(0,17)}}...</a>
+                      <a [routerLink]="[ '../../../detalle-producto/'+producto.id_productos ]"
+                      *ngIf="producto.nombre_producto.length <17">{{producto.nombre_producto}}</a>
+                    </li>
                   </ul>
                 </div>
             </li>
