@@ -50,7 +50,7 @@
   
           <ul *ngFor="let categoria of categorias" class="text-center">
             <li  *ngIf="categoria.productos">
-                <a class="nav-link" href="#" (click)="buscar(categoria.nombre_categoria)" >{{categoria.nombre_categoria}}</a>
+                <a class="nav-link" routerLink="/" (click)="buscar(categoria.nombre_categoria)" >{{categoria.nombre_categoria}}</a>
                 <div *ngIf="categoria.productos.length !== 0">
                   <ul class="dropdown"  
                     >

@@ -19,6 +19,7 @@ import { ModificacionComponent } from './components/admin/modificacion/modificac
 import { FabricjsEditorModule } from './projects/angular-editor-fabric-js/src/public-api';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+import {FilterService} from './services/filter.service'
 
 
 @NgModule({
@@ -45,7 +46,7 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
     MaterialModule,
     MatSelectCountryModule,
   ],
-  providers: [],
+  providers: [FilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

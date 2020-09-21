@@ -5,6 +5,8 @@ import {UsuarioService} from '../../services/usuarios.service'
 import {environment} from '../../../environments/environment'
 import {ProductosService} from '../../services/productos.service'
 import {CategoriaService} from '../../services/categorias.service'
+import {FilterService} from '../../services/filter.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-usuario',
@@ -17,6 +19,7 @@ export class UsuarioComponent  {
   registrado:boolean=false;
   categorias = []
   nombre_usuario:string;
+  categoria;
 
   categorias2:any;
   productos:any;
@@ -26,6 +29,8 @@ export class UsuarioComponent  {
     public usuarioService: UsuarioService,
     public categoriaService: CategoriaService,
     public productoService: ProductosService,
+    public filterService:FilterService,
+    public router:Router,
   ) {
     const id_usuarios = localStorage.getItem("id_usuarios")
     console.log(id_usuarios)
@@ -68,12 +73,11 @@ export class UsuarioComponent  {
   logout(){
     localStorage.clear()
   }
-  buscar(event:any){
-    const categories = this.productosRes;
-    this.productos = categories.filter((category:any)=>{
-        const categoryS = JSON.stringify(category);
-        return categoryS.indexOf(event)===-1?false:true;
-    });
+  buscar(categoria:any){
+    this.categoria = categoria
+    setTimeout(()=>{
+      this.filterService.updateData(categoria);
+    },500)
   }
   search_array(array,valuetofind) {
     for (let i = 0; i < array.length; i++) {
@@ -82,4 +86,5 @@ export class UsuarioComponent  {
         }
     }
   }
+
 }

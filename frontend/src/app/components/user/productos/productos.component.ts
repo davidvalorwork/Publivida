@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoriaService} from '../../../services/categorias.service'
 import {ProductosService} from '../../../services/productos.service'
 import {environment} from '../../../../environments/environment'
+import {FilterService} from '../../../services/filter.service'
 
 @Component({
   selector: 'app-productos',
@@ -24,6 +25,7 @@ export class ProductosComponent implements OnInit {
   constructor(
     public categoriaService: CategoriaService,
     public productoService: ProductosService,
+    public filterService:FilterService,
   ) { 
     this.categoriaService.getCategorias().subscribe((response:any)=>{
       this.categorias = response.payload
@@ -53,10 +55,12 @@ export class ProductosComponent implements OnInit {
         const categoryS = JSON.stringify(category);
         return categoryS.indexOf(event)===-1?false:true;
     });
-
 }
 
   ngOnInit(): void {
+    this.filterService.getData().subscribe(data => {
+      this.buscar(data)
+    })
   }
 
 }
