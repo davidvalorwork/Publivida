@@ -9,6 +9,7 @@ import {environment} from "../../../../../environments/environment"
 })
 export class VerComponent implements OnInit {
   url_api:string=`${environment.URL_API}/`
+  detallex=true
   imagenes=this.data.imagenes.split(',')
   detalle;
   colores;
@@ -20,10 +21,12 @@ export class VerComponent implements OnInit {
   ) {
     if(data.detalle){
       this.detalle = data.detalle
-      this.colores = this.detalle.colores.split(',')
-      this.textos = this.detalle.textos.split(',')
-      this.fonts = this.detalle.fonts.split(',')
-      this.imagenes_subidas = this.detalle.imagenes_subidas.split(',')
+      this.colores = this.detalle.colores?.split(',')
+      this.textos = this.detalle.textos?.split(',')
+      this.fonts = this.detalle.fonts?.split(',')
+      this.imagenes_subidas = this.detalle.imagenes_subidas?.split(',')
+    }else{
+      this.detallex = false
     }
   }
 

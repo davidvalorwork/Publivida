@@ -7,7 +7,7 @@ module.exports={
     const pedidos = await db.pedidos.findAll(req.body.condition);
     for(let i in pedidos){
       const user = await db.usuarios.findOne({where:{id_usuarios:pedidos[i].dataValues.usuarioIdUsuarios}})
-      user===undefined?null:pedidos[i].dataValues.usuario = user.correo
+      user===undefined?null:pedidos[i].dataValues.usuario = `${user.nombres} ${user.apellidos}`
       const detalle = await db.detalles_pedidos.findAll({where:{
           borrado:0,
           pedidoIdPedidos:pedidos[i].dataValues.id_pedidos
